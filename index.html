@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oráculo das 25 Runas Nórdicas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CONTROLE DE IDIOMA -->
+    <button id="btnIdioma" class="btn-idioma" onclick="alternarIdioma()">
+        🇺🇸 English
+    </button>
+
+    <!-- BOTÃO DO MENU DE RUNAS -->
+    <button id="btnAbrirRunas" class="btn-menu-runas" onclick="abrirBiblioteca()">
+        ᛟ <span id="textoMenuRunas">Runas</span>
+    </button>
+
+
+    <!-- ============================= -->
+    <!-- CONTROLE DE MÚSICA -->
+    <!-- ============================= -->
+
+    <div class="controle-musica">
+
+        <div class="musica-titulo">
+            <span id="iconeMusica">ᛟ</span>
+            <span id="textoMusica">Música Nórdica</span>
+        </div>
+
+        <button
+            id="btnMusica"
+            class="btn-musica"
+            onclick="alternarMusica()"
+        >
+            ▶
+        </button>
+
+        <input
+            id="volumeMusica"
+            class="volume-musica"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.35"
+            oninput="alterarVolume(this.value)"
+        >
+
+    </div>
+
+    <audio id="musicaViking" loop preload="auto">
+        <source src="audio/musica-viking.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- ================================================= -->
+    <!-- PÁGINA PRINCIPAL - CONSULTA -->
+    <!-- ================================================= -->
+
+    <main id="paginaConsulta" class="pagina">
+
+        <div class="container">
+
+            <div class="ornamento-top">
+                ᛟ ━━━━━━━━━ ᛏ ━━━━━━━━━ ᛟ
+            </div>
+
+            <h1 id="tituloPrincipal">
+                Oráculo das Três Runas
+            </h1>
+
+            <p id="instrucao" class="instrucao">
+                Concentre-se em sua questão. Vamos sortear o Passado,
+                o Presente e o Futuro.
+            </p>
+
+            <button
+                id="btnPrincipal"
+                class="btn-acao"
+                onclick="avancarJogo()"
+            >
+                Sortear Primeira Runa (Passado)
+            </button>
+
+            <div id="etapaTexto" class="etapa-titulo"></div>
+
+
+            <!-- RUNA ATUAL -->
+
+            <section
+                id="runaFocoBox"
+                class="runa-foco"
+                style="display: none;"
+            >
+
+                <div id="focoSimbolo" class="runa-simbolo"></div>
+
+                <h2 id="focoNome" class="runa-nome"></h2>
+
+                <p id="focoDesc" class="runa-desc"></p>
+
+            </section>
+
+
+            <!-- RESULTADO FINAL -->
+
+            <section
+                id="resultadoFinal"
+                class="resultado-final"
+                style="display: none;"
+            >
+
+                <h2 id="tituloResultado">
+                    O Veredito do Destino
+                </h2>
+
+                <div class="linha-ornamental">
+                    ᛟ ───────── ᛟ ───────── ᛟ
+                </div>
+
+                <div class="grid-runas">
+
+                    <!-- PASSADO -->
+
+                    <div class="card-resumo pedra-resumo">
+
+                        <h4 id="posicao0">
+                            Passado
+                        </h4>
+
+                        <div
+                            id="resSimbolo0"
+                            class="simbolo-pequeno"
+                        ></div>
+
+                        <div
+                            id="resNome0"
+                            class="nome-pequeno"
+                        ></div>
+
+                        <p
+                            id="resDesc0"
+                            class="desc-pequena"
+                        ></p>
+
+                    </div>
+
+
+                    <!-- PRESENTE -->
+
+                    <div class="card-resumo pedra-resumo">
+
+                        <h4 id="posicao1">
+                            Presente
+                        </h4>
+
+                        <div
+                            id="resSimbolo1"
+                            class="simbolo-pequeno"
+                        ></div>
+
+                        <div
+                            id="resNome1"
+                            class="nome-pequeno"
+                        ></div>
+
+                        <p
+                            id="resDesc1"
+                            class="desc-pequena"
+                        ></p>
+
+                    </div>
+
+
+                    <!-- FUTURO -->
+
+                    <div class="card-resumo pedra-resumo">
+
+                        <h4 id="posicao2">
+                            Futuro
+                        </h4>
+
+                        <div
+                            id="resSimbolo2"
+                            class="simbolo-pequeno"
+                        ></div>
+
+                        <div
+                            id="resNome2"
+                            class="nome-pequeno"
+                        ></div>
+
+                        <p
+                            id="resDesc2"
+                            class="desc-pequena"
+                        ></p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    id="btnReiniciar"
+                    class="btn-acao btn-secundario"
+                    onclick="reiniciarJogo()"
+                >
+                    Consultar Novamente
+                </button>
+
+            </section>
+
+            <div class="ornamento-bottom">
+                ᛟ ━━━━━━━━━━━━━━━━━━━ ᛟ
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================================================= -->
+    <!-- PÁGINA DA BIBLIOTECA DE RUNAS -->
+    <!-- ================================================= -->
+
+    <main
+        id="paginaRunas"
+        class="pagina pagina-biblioteca"
+        style="display: none;"
+    >
+
+        <div class="container container-biblioteca">
+
+            <div class="cabecalho-biblioteca">
+
+                <button
+                    class="btn-voltar"
+                    onclick="voltarConsulta()"
+                >
+                    ← <span id="textoVoltar">Voltar à Consulta</span>
+                </button>
+
+                <div class="titulo-biblioteca">
+
+                    <div class="simbolo-titulo">
+                        ᛟ
+                    </div>
+
+                    <h1 id="tituloBiblioteca">
+                        As 25 Runas Nórdicas
+                    </h1>
+
+                    <p id="instrucaoBiblioteca">
+                        Clique em uma runa para descobrir seu significado.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="biblioteca-layout">
+
+                <!-- LISTA DAS RUNAS -->
+
+                <section class="area-lista-runas">
+
+                    <div
+                        id="gridBiblioteca"
+                        class="grid-biblioteca"
+                    ></div>
+
+                </section>
+
+
+                <!-- DETALHE DA RUNA -->
+
+                <aside
+                    id="detalheRuna"
+                    class="detalhe-runa"
+                >
+
+                    <div
+                        id="detalhePlaceholder"
+                        class="detalhe-placeholder"
+                    >
+
+                        <div class="placeholder-simbolo">
+                            ᚱ
+                        </div>
+
+                        <h2 id="textoSelecione">
+                            Selecione uma runa
+                        </h2>
+
+                        <p id="textoSelecioneDescricao">
+                            Escolha uma das pedras para conhecer
+                            seu significado.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        id="detalheConteudo"
+                        style="display: none;"
+                    >
+
+                        <div
+                            id="detalheSimbolo"
+                            class="detalhe-simbolo"
+                        ></div>
+
+                        <h2
+                            id="detalheNome"
+                            class="detalhe-nome"
+                        ></h2>
+
+                        <div class="detalhe-linha"></div>
+
+                        <p
+                            id="detalheDesc"
+                            class="detalhe-desc"
+                        ></p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,991 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+
+    background: #16161f;
+
+    color: #eeeeee;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   BOTÃO DE IDIOMA
+========================================= */
+
+.btn-idioma {
+    position: fixed;
+
+    top: 18px;
+    right: 20px;
+
+    z-index: 1000;
+
+    padding: 9px 15px;
+
+    border: 1px solid #555565;
+
+    border-radius: 8px;
+
+    background: #29293a;
+
+    color: #cfb53b;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-idioma:hover {
+    background: #353548;
+
+    border-color: #cfb53b;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   BOTÃO LATERAL DAS RUNAS
+========================================= */
+
+.btn-menu-runas {
+    position: fixed;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 1000;
+
+    padding: 12px 15px;
+
+    border: 1px solid #555565;
+
+    border-radius: 8px;
+
+    background: #29293a;
+
+    color: #cfb53b;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+
+    transition: 0.2s ease;
+}
+
+.btn-menu-runas:hover {
+    background: #353548;
+
+    border-color: #cfb53b;
+
+    transform:
+        translateY(-50%)
+        translateX(2px);
+}
+
+
+/* =========================================
+   CONTROLE DA MÚSICA
+========================================= */
+
+.controle-musica {
+    position: fixed;
+
+    left: 15px;
+    bottom: 15px;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 11px;
+
+    background: #29293a;
+
+    border: 1px solid #555565;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.musica-titulo {
+    color: #aaaab5;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+.btn-musica {
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid #555565;
+
+    border-radius: 50%;
+
+    background: #353548;
+
+    color: #cfb53b;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-musica:hover {
+    background: #414157;
+
+    border-color: #cfb53b;
+}
+
+.volume-musica {
+    width: 70px;
+
+    accent-color: #cfb53b;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    width: min(850px, 100%);
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: #1f1f2e;
+
+    border: 1px solid #383849;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================
+   ORNAMENTOS
+========================================= */
+
+.ornamento-top,
+.ornamento-bottom {
+    text-align: center;
+
+    color: #625b3e;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.ornamento-top {
+    margin-bottom: 15px;
+}
+
+.ornamento-bottom {
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+h1 {
+    margin: 0 0 15px;
+
+    text-align: center;
+
+    color: #cfb53b;
+
+    font-size: clamp(2rem, 5vw, 2.7rem);
+
+    font-weight: 700;
+}
+
+.instrucao {
+    max-width: 650px;
+
+    margin: 0 auto 25px;
+
+    text-align: center;
+
+    color: #aaaab5;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   BOTÃO PRINCIPAL
+========================================= */
+
+.btn-acao {
+    display: block;
+
+    margin: 0 auto;
+
+    padding: 12px 22px;
+
+    border: 1px solid #cfb53b;
+
+    border-radius: 8px;
+
+    background: #cfb53b;
+
+    color: #1b1b23;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-acao:hover {
+    background: #e0c653;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.btn-secundario {
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   ETAPA
+========================================= */
+
+.etapa-titulo {
+    min-height: 24px;
+
+    margin: 25px 0 10px;
+
+    text-align: center;
+
+    color: #cfb53b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   PEDRA PRINCIPAL
+========================================= */
+
+.runa-foco {
+    position: relative;
+
+    max-width: 500px;
+
+    margin: 20px auto;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #56565c,
+            #3d3d43
+        );
+
+    border: 2px solid #716b52;
+
+    border-radius:
+        48% 52% 50% 46% /
+        46% 48% 52% 54%;
+
+    box-shadow:
+        inset 5px 5px 12px rgba(255, 255, 255, 0.08),
+        inset -6px -7px 14px rgba(0, 0, 0, 0.35),
+        0 10px 22px rgba(0, 0, 0, 0.45);
+
+    animation: fadeIn 0.5s ease;
+}
+
+.runa-simbolo {
+    color: #cfb53b;
+
+    font-size: 4.5rem;
+
+    line-height: 1;
+
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.55);
+}
+
+.runa-nome {
+    margin: 15px 0 10px;
+
+    color: #e0c85d;
+
+    font-size: 1.6rem;
+
+    font-weight: 700;
+}
+
+.runa-desc {
+    max-width: 450px;
+
+    margin: 0 auto;
+
+    color: #dddddf;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RESULTADO FINAL
+========================================= */
+
+.resultado-final {
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px dashed #555565;
+
+    animation: fadeIn 0.5s ease;
+}
+
+.resultado-final h2 {
+    margin: 0;
+
+    text-align: center;
+
+    color: #cfb53b;
+
+    font-size: 1.6rem;
+}
+
+.linha-ornamental {
+    margin: 10px 0 25px;
+
+    text-align: center;
+
+    color: #5e583d;
+}
+
+
+/* =========================================
+   GRID DE RESULTADOS
+========================================= */
+
+.grid-runas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   PEDRAS DO RESULTADO
+========================================= */
+
+.pedra-resumo {
+    position: relative;
+
+    min-height: 280px;
+
+    padding: 25px 18px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #505056,
+            #38383f
+        );
+
+    border: 2px solid #67634f;
+
+    border-radius:
+        48% 52% 47% 53% /
+        51% 45% 55% 49%;
+
+    box-shadow:
+        inset 5px 5px 12px rgba(255, 255, 255, 0.06),
+        inset -7px -7px 14px rgba(0, 0, 0, 0.35),
+        0 8px 18px rgba(0, 0, 0, 0.4);
+
+    transition: 0.25s ease;
+}
+
+.pedra-resumo:nth-child(1) {
+    transform: rotate(-1deg);
+}
+
+.pedra-resumo:nth-child(2) {
+    transform: rotate(1deg);
+}
+
+.pedra-resumo:nth-child(3) {
+    transform: rotate(-0.5deg);
+}
+
+.pedra-resumo:hover {
+    transform:
+        translateY(-4px)
+        rotate(0deg);
+}
+
+.card-resumo h4 {
+    margin: 0 0 12px;
+
+    color: #cfb53b;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+}
+
+.simbolo-pequeno {
+    color: #cfb53b;
+
+    font-size: 3rem;
+
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.55);
+}
+
+.nome-pequeno {
+    margin: 8px 0 12px;
+
+    color: #dfc65e;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+.desc-pequena {
+    margin: 0;
+
+    color: #c4c4ca;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   BIBLIOTECA DE RUNAS
+========================================= */
+
+.container-biblioteca {
+    width: min(1100px, 100%);
+
+    max-width: 1100px;
+
+    margin-top: 20px;
+}
+
+.cabecalho-biblioteca {
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.btn-voltar {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    padding: 9px 15px;
+
+    border: 1px solid #555565;
+
+    border-radius: 8px;
+
+    background: #29293a;
+
+    color: #cfb53b;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background: #353548;
+
+    border-color: #cfb53b;
+}
+
+.titulo-biblioteca {
+    padding: 40px 150px 0;
+
+    text-align: center;
+}
+
+.simbolo-titulo {
+    color: #cfb53b;
+
+    font-size: 2rem;
+}
+
+.titulo-biblioteca h1 {
+    margin: 5px 0 10px;
+}
+
+.titulo-biblioteca p {
+    margin: 0;
+
+    color: #aaaab5;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   LAYOUT DA BIBLIOTECA
+========================================= */
+
+.biblioteca-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   GRID DAS RUNAS
+========================================= */
+
+.grid-biblioteca {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(90px, 1fr));
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   PEDRAS DA BIBLIOTECA
+========================================= */
+
+.pedra-runa {
+    --rotacao: 0deg;
+
+    min-height: 135px;
+
+    padding: 15px 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 2px solid #65614d;
+
+    border-radius:
+        48% 52% 46% 54% /
+        50% 44% 56% 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #505056,
+            #37373d
+        );
+
+    color: #cfb53b;
+
+    cursor: pointer;
+
+    transform: rotate(var(--rotacao));
+
+    box-shadow:
+        inset 4px 4px 10px rgba(255, 255, 255, 0.05),
+        inset -5px -6px 12px rgba(0, 0, 0, 0.4),
+        0 7px 14px rgba(0, 0, 0, 0.4);
+
+    transition:
+        0.25s ease;
+}
+
+.pedra-runa:hover {
+    transform:
+        rotate(0deg)
+        translateY(-5px);
+
+    border-color: #cfb53b;
+
+    box-shadow:
+        inset 4px 4px 10px rgba(255, 255, 255, 0.07),
+        inset -5px -6px 12px rgba(0, 0, 0, 0.4),
+        0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+.pedra-runa.selecionada {
+    border-color: #cfb53b;
+
+    box-shadow:
+        0 0 0 1px rgba(207, 181, 59, 0.25),
+        0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+.pedra-simbolo {
+    font-size: 2.8rem;
+
+    line-height: 1;
+
+    color: #cfb53b;
+
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.55);
+}
+
+.pedra-nome {
+    color: #d5c067;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   DETALHE DA RUNA
+========================================= */
+
+.detalhe-runa {
+    position: sticky;
+
+    top: 20px;
+
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 22px;
+
+    text-align: center;
+
+    background: #252534;
+
+    border: 1px solid #454557;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.detalhe-placeholder {
+    color: #9999a5;
+}
+
+.placeholder-simbolo {
+    margin-bottom: 20px;
+
+    color: #69694d;
+
+    font-size: 5rem;
+}
+
+.detalhe-placeholder h2 {
+    margin-bottom: 10px;
+
+    color: #cfb53b;
+
+    font-size: 1.4rem;
+}
+
+.detalhe-placeholder p {
+    margin: 0;
+
+    color: #9999a5;
+
+    line-height: 1.6;
+
+    font-size: 13px;
+}
+
+.detalhe-simbolo {
+    color: #cfb53b;
+
+    font-size: 5.5rem;
+
+    line-height: 1;
+
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.55);
+}
+
+.detalhe-nome {
+    margin: 18px 0 14px;
+
+    color: #dfc65e;
+
+    font-size: 1.6rem;
+
+    letter-spacing: 1.5px;
+}
+
+.detalhe-linha {
+    width: 70%;
+
+    height: 1px;
+
+    margin: 0 auto 18px;
+
+    background: #555565;
+}
+
+.detalhe-desc {
+    margin: 0;
+
+    color: #ccccd2;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ANIMAÇÃO
+========================================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .grid-biblioteca {
+        grid-template-columns:
+            repeat(4, minmax(85px, 1fr));
+    }
+
+    .biblioteca-layout {
+        grid-template-columns:
+            1fr 280px;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .container {
+        padding: 25px 20px;
+    }
+
+    .biblioteca-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detalhe-runa {
+        position: relative;
+
+        top: auto;
+
+        min-height: 330px;
+    }
+
+    .titulo-biblioteca {
+        padding: 55px 10px 10px;
+    }
+
+    .grid-biblioteca {
+        grid-template-columns:
+            repeat(4, minmax(75px, 1fr));
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .btn-idioma {
+        top: 10px;
+        right: 10px;
+
+        padding: 8px 11px;
+
+        font-size: 11px;
+    }
+
+    .btn-menu-runas {
+        left: 10px;
+
+        top: auto;
+        bottom: 75px;
+
+        transform: none;
+
+        padding: 9px 11px;
+
+        font-size: 12px;
+    }
+
+    .btn-menu-runas:hover {
+        transform: translateY(-2px);
+    }
+
+    .controle-musica {
+        left: auto;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .musica-titulo {
+        display: none;
+    }
+
+    .grid-runas {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-biblioteca {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 10px;
+    }
+
+    .pedra-runa {
+        min-height: 115px;
+    }
+
+    .pedra-simbolo {
+        font-size: 2.4rem;
+    }
+
+    .pedra-nome {
+        font-size: 8px;
+    }
+
+    .runa-foco {
+        padding: 30px 20px;
+    }
+
+    .runa-simbolo {
+        font-size: 4rem;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .grid-biblioteca {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+}
