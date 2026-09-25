@@ -436,7 +436,7 @@ let runasSorteadas = [];
 
 let copiaSaco = [...bancoRunas];
 
-let idioma = "pt";
+let idioma = "en";
 
 let runaSelecionadaBiblioteca = null;
 
