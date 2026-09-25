@@ -11,7 +11,11 @@ body {
     min-height: 100vh;
     padding: 20px;
 
-    background: #16161f;
+
+    background-image: url('img/back.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
     color: #eeeeee;
 
