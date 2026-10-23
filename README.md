@@ -1,2 +1,2 @@
 # Runes
-![Runes](./frontend/assets/dashboard-preview.png)
+![Runes](Imagem.png)
